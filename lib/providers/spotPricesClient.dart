@@ -12,7 +12,11 @@ Future<List<Record>> fetchSpotPrices() async {
   final response = await http.get(Uri.parse('$baseUrl$path?sql=$sql'));
 
   if (response.statusCode == 200) {
-    return Result.fromJson(jsonDecode(response.body)).records.reversed.toList();
+    return List.of(Result.fromJson(jsonDecode(response.body))
+        .records
+        .where((element) => element.priceArea == "DK1")
+        .toList()
+        .reversed);
   } else {
     throw Exception('Failed to load record');
   }

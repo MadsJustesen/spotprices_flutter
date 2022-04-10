@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Record {
   final double spotPriceEUR;
   final double spotPriceDKK;
@@ -24,9 +26,21 @@ class Record {
         id: json['_id']);
   }
 
-  String kwhPrice() {
-    double spotPrice =
-        spotPriceDKK != 0.0 ? spotPriceDKK : spotPriceEUR * 7.4372;
-    return (spotPrice / 1000).toStringAsFixed(2) + "kr";
+  double kwhPriceDKK() {
+    return (spotPriceDKK != 0.0 ? spotPriceDKK : spotPriceEUR * 7.4372) / 1000;
+  }
+
+  String formattedPrice() {
+    return kwhPriceDKK().toStringAsFixed(2) + "kr/kWh";
+  }
+
+  MaterialColor color() {
+    if (kwhPriceDKK() > 2) {
+      return Colors.red;
+    } else if (kwhPriceDKK() > 1) {
+      return Colors.yellow;
+    } else {
+      return Colors.green;
+    }
   }
 }
