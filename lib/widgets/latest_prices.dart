@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../domain/record.dart';
-import '../providers/spotPricesClient.dart';
+import '../providers/spot_prices_client.dart';
 
 class LatestPricesWidget extends StatefulWidget {
   const LatestPricesWidget({Key? key}) : super(key: key);

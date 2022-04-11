@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/latestPrices.dart';
+import '../widgets/latest_prices.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key, required this.title}) : super(key: key);
