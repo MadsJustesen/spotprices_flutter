@@ -4,7 +4,7 @@ import 'package:spotprices_flutter/domain/result.dart';
 import 'dart:convert';
 
 String sql =
-    "SELECT * from \"elspotprices\" WHERE \"HourUTC\" > ((current_timestamp at time zone 'UTC') - INTERVAL '2 days')";
+    "SELECT * from \"elspotprices\" WHERE \"HourUTC\" > ((current_timestamp at time zone 'UTC') - INTERVAL '30 days')";
 String baseUrl = "https://api.energidataservice.dk";
 String path = "/datastore_search_sql";
 

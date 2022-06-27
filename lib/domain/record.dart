@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Record {
   final double spotPriceEUR;
@@ -34,11 +35,25 @@ class Record {
     return kwhPriceDKK().toStringAsFixed(2) + "kr/kWh";
   }
 
+  String formattedHourDK() {
+    DateTime dateTime = DateTime.parse(hourDK);
+    String date = DateFormat("dd. MMM").format(dateTime);
+    String hour = DateFormat("HH").format(dateTime);
+    int hourAsInt = int.parse(hour);
+    return "$date: $hour-${hourAsInt + 1}";
+  }
+
   MaterialColor color() {
-    if (kwhPriceDKK() > 2) {
+    if (kwhPriceDKK() > 3) {
       return Colors.red;
+    } else if (kwhPriceDKK() > 2) {
+      return Colors.deepOrange;
+    } else if (kwhPriceDKK() > 1.5) {
+      return Colors.amber;
     } else if (kwhPriceDKK() > 1) {
       return Colors.yellow;
+    } else if (kwhPriceDKK() > 0.5) {
+      return Colors.lightGreen;
     } else {
       return Colors.green;
     }
